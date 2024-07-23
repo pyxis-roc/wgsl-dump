@@ -109,6 +109,7 @@ pub fn iter_access_expr<'a>(
 #[cfg(test)]
 mod tests {
     use super::*;
+    use crate::dump;
     use rstest::*;
     use std::vec;
 
@@ -171,7 +172,7 @@ mod tests {
         assert_eq!(
             &expected[..],
             iter_if_conditions(&module)
-                .map(|c| write_expression(wgsl_shader, &c.0, c.1))
+                .map(|c| dump::write_expression(wgsl_shader, &c.0, &c.1))
                 .collect::<Vec<&str>>()
         );
     }
@@ -182,7 +183,7 @@ mod tests {
     fn test_iter_access(#[case] wgsl_shader: &'static str, #[case] expected: Vec<&str>) {
         let module = parse_wgsl(wgsl_shader).unwrap();
         let result = iter_access_expr(&module)
-            .map(|c| write_expression(wgsl_shader, &c.0, &c.1))
+            .map(|c| dump::write_expression(wgsl_shader, &c.0, &c.1))
             .collect::<Vec<&str>>();
         assert_eq!(&expected[..], result);
     }

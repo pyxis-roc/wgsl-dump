@@ -3,9 +3,18 @@ name: Rust
 on:
   push:
     branches: [ "main" ]
+    paths-ignore:
+      - "**/*.md"
+      - "REUSE.toml"
+      - "**/*.gitignore"
+      - "LICENSES/*"
   pull_request:
     branches: [ "main" ]
-
+    paths-ignore:
+      - "**/*.md"
+      - "REUSE.toml"
+      - "**/*.gitignore"
+      - "LICENSES/*"
 env:
   CARGO_TERM_COLOR: always
 
