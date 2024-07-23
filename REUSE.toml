@@ -1,0 +1,6 @@
+version = 1
+
+[[annotations]]
+path = ["Cargo.lock", "*.toml", ".github/**/*.yml"]
+SPDX-FileCopyrightText = "2024 University of Rochester"
+SPDX-License-Identifier = "MIT"

@@ -1,0 +1,18 @@
+[package]
+name = "wgsl-dump"
+version = "0.5.0"
+edition = "2021"
+license = "MIT"
+authors = ["Benjamin Valpey"]
+repository = "https://"
+
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+clap = "^4.5.9"
+clio = { version = "^0.3.5", features = ["clap-parse"] }
+naga = {version = "^22.0.0", features = ["wgsl-in", "wgsl-out"] }
+
+[dev-dependencies]
+rstest = "0.21.0"
