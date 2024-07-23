@@ -18,7 +18,7 @@ wgsl-dump is a small command line utility for dumping selected parts of a wgsl m
 
 ### Installation
 
-Install wgsl-dumper with cargo by providing 
+Install wgsl-dump with cargo by providing 
 `cargo install --git https://github.com/pyxis-roc/wgsl-dump`
 
 ### Usage
