@@ -26,6 +26,8 @@ Install wgsl-dump with cargo by providing
 To use wgsl-dump, invoke it from the command line, providing the path to the wgsl file you want to parse:
 ``wgsl-dump -i /path/to/input -o /path/to/output <--dump-conditions|--dump-indices>``
 
+Additional usage information can be found by running ``wgsl-dump --help``
+
 ## Licenses
 
 - **Code**: The source code is licensed under the MIT License.
