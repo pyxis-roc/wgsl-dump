@@ -75,8 +75,8 @@ pub(crate) fn iter_loop_conditions(
 ///
 /// An iterator yielding tuples of the entry point contianing the expression and the expression itself.
 ///
-pub fn iter_access_expr<'a>(
-    module: &'a naga::Module,
+pub fn iter_access_expr(
+    module: &naga::Module,
 ) -> impl Iterator<Item = (&naga::Function, naga::Handle<naga::Expression>)> {
     // Local refs to module's types and vars
     let mod_types = &module.types;
@@ -113,7 +113,7 @@ mod tests {
     use rstest::*;
     use std::vec;
 
-    static WGSL_SHADER_1: &'static str = r#"
+    static WGSL_SHADER_1: &str = r#"
     @group(0) @binding(0) var<storage, read> A : array<f32>;
     @group(0) @binding(1) var<storage, read_write> B : array<f32>;
 
@@ -137,7 +137,7 @@ mod tests {
     }
     "#;
 
-    static WGSL_SHADER_2: &'static str = r#"
+    static WGSL_SHADER_2: &str = r#"
     @group(0) @binding(0) var<storage, read> A : array<f32>;
     @group(0) @binding(1) var<storage, read_write> B : array<f32>;
 
@@ -172,7 +172,7 @@ mod tests {
         assert_eq!(
             &expected[..],
             iter_if_conditions(&module)
-                .map(|c| dump::write_expression(wgsl_shader, &c.0, &c.1))
+                .map(|c| dump::write_expression(wgsl_shader, c.0, &c.1))
                 .collect::<Vec<&str>>()
         );
     }
@@ -183,7 +183,7 @@ mod tests {
     fn test_iter_access(#[case] wgsl_shader: &'static str, #[case] expected: Vec<&str>) {
         let module = parse_wgsl(wgsl_shader).unwrap();
         let result = iter_access_expr(&module)
-            .map(|c| dump::write_expression(wgsl_shader, &c.0, &c.1))
+            .map(|c| dump::write_expression(wgsl_shader, c.0, &c.1))
             .collect::<Vec<&str>>();
         assert_eq!(&expected[..], result);
     }
