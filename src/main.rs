@@ -45,7 +45,7 @@ struct Opt {
     #[clap(long, value_parser, default_value = "-", help(""))]
     output: OutputPath,
 
-    #[clap(long, value_enum, default_missing_value("All"), require_equals(true), num_args(0..=1), help("Specify condition dumping mode (`all` by default)"))]
+    #[clap(long, value_enum, default_missing_value("all"), require_equals(true), num_args(0..=1), help("Specify condition dumping mode (`all` by default)"))]
     dump_conditions: Option<ConditionMode>,
 
     #[clap(long, help = "Index dumping mode (e.g. x[y+z])")]
